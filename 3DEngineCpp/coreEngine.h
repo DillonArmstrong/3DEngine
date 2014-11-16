@@ -15,7 +15,7 @@ public:
 	
 	void Start();
 	void Stop();
-    void framerate();
+    int framerate();
 	
 	inline RenderingEngine* GetRenderingEngine() { return m_renderingEngine; }
 protected:

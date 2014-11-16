@@ -20,7 +20,8 @@ CoreEngine::CoreEngine(int width, int height, double frameRate, Game* game) :
 	m_game->SetEngine(this);
 }
 
-	
+
+
 CoreEngine::~CoreEngine()
 {
 	Window::Dispose();
@@ -34,6 +35,7 @@ void CoreEngine::CreateWindow(const std::string& title)
 	m_renderingEngine = new RenderingEngine();
 
 }
+
 
 void CoreEngine::Start()
 {
@@ -51,6 +53,8 @@ void CoreEngine::Stop()
 	m_isRunning = false;
 }
 
+int frames = 0;
+
 
 void CoreEngine::Run()
 {
@@ -61,7 +65,7 @@ void CoreEngine::Run()
 	double lastTime = Time::GetTime();
 	double unprocessedTime = 0;
 	double frameCounter = 0;
-    int frames = 0;
+
 
 	
 
@@ -78,6 +82,8 @@ void CoreEngine::Run()
 
 		if(frameCounter >= 1.0)
 		{
+
+
 			printf("%i\n",frames);
 
 			
@@ -110,8 +116,14 @@ void CoreEngine::Run()
 		{
 			Util::Sleep(1);
 		}
+
 	}
 
 
+
+}
+int CoreEngine::framerate()
+{
+	return frames;
 }
 
