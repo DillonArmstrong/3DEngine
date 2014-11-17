@@ -7,6 +7,8 @@
 RenderingEngine::RenderingEngine()
 {
 	m_samplerMap.insert(std::pair<std::string, unsigned int>("diffuse", 0));
+	m_samplerMap.insert(std::pair<std::string, unsigned int>("normalMap", 1));
+	m_samplerMap.insert(std::pair<std::string, unsigned int>("dispMap", 2));
 	
 	AddVector3f("ambient", Vector3f(0.1f, 0.1f, 0.1f));
 	m_defaultShader = new Shader("forward-ambient");
@@ -27,6 +29,8 @@ RenderingEngine::~RenderingEngine()
 
 void RenderingEngine::Render(GameObject* object)
 {
+	Window::BindAsRenderTarget();
+
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	object->RenderAll(m_defaultShader, this);
 	

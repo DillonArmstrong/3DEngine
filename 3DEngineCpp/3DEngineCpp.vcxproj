@@ -48,7 +48,7 @@
     <ClCompile Include="gameObject.cpp" />
     <ClCompile Include="input.cpp" />
     <ClCompile Include="lighting.cpp" />
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Game\main.cpp" />
     <ClCompile Include="math3d.cpp" />
     <ClCompile Include="mesh.cpp" />
     <ClCompile Include="renderingEngine.cpp" />
@@ -94,6 +94,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>E:\Programming\Visual Studio\Projects\3DEngine\3DEngineCpp;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>

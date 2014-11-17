@@ -13,17 +13,25 @@ public:
 	
 	virtual ~Material()
 	{
-		//Delete all textures
+		//Delete the textures
 		std::map<std::string, Texture*>::iterator it;
 		for(it = m_textureMap.begin(); it != m_textureMap.end(); it++)
 			if(it->second) delete it->second;
 	}
 	
-	Material(Texture* diffuse, float specularIntensity, float specularPower)
+	Material(Texture* diffuse, float specularIntensity, float specularPower,
+		Texture* normalMap = new Texture("default_normal.jpg"),
+		Texture* dispMap = new Texture("default_disp.png"), float dispMapScale = 0.0f, float dispMapOffset = 0)
 	{
 		AddTexture("diffuse", diffuse);
 		AddFloat("specularIntensity", specularIntensity);
 		AddFloat("specularPower", specularPower);
+		AddTexture("normalMap", normalMap);
+		AddTexture("dispMap", dispMap);
+
+		float baseBias = dispMapScale / 2.0f;
+		AddFloat("dispMapScale", dispMapScale);
+		AddFloat("dispMapBais", -baseBias + baseBias * dispMapOffset);
 	}
 	
 	inline void AddTexture(const std::string& name, Texture* value) { m_textureMap.insert(std::pair<std::string, Texture*>(name, value)); }
